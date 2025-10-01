@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud Enviada - Gestoría Tramitium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Azul oscuro */
+            --secondary-color: #3498db; /* Azul claro */
+            --accent-color: #27ae60; /* Verde de éxito */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+        
+        .thank-you-box {
+            background-color: var(--white);
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .thank-you-box h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .thank-you-box p {
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+        
+        .thank-you-box i {
+            color: var(--accent-color);
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .thank-you-box {
+                padding: 30px 20px;
+                margin-top: 30px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestoría Tramitium</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="thank-you-box">
+            <i class="fas fa-check-circle"></i>
+            <h2>¡Solicitud Recibida con Éxito!</h2>
+            <p>Hemos recibido la información de su trámite.</p>
+            <p>En breve, un gestor revisará su solicitud y se pondrá en contacto con usted a través del correo electrónico o teléfono proporcionados para confirmar los datos y los siguientes pasos.</p>
+            <p>Gracias por confiar en Gestoría Tramitium.</p>
+            <a href="index.html" class="back-link">Volver a la Página Principal</a>
+        </div>
+    </main>
+
+</body>
+</html>

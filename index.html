@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestoría Tramitium: Gestiones y Trámites Online</title>
+    <meta name="description" content="Gestoría Tramitium, tu centro de soluciones para trámites registrales, mercantiles y notariales en España. Realiza tus gestiones de forma rápida, segura y sin moverte de casa.">
+    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Azul oscuro */
+            --secondary-color: #3498db; /* Azul claro */
+            --accent-color: #e67e22; /* Naranja */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .hero {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 2em;
+            margin-top: 0;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            margin: 0;
+            flex: 1 1 auto;
+            min-width: 150px; /* Asegura que no se achiquen demasiado */
+            border-right: 1px solid var(--border-color);
+        }
+
+        nav ul li:last-child {
+            border-right: none;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        section {
+            background-color: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2em;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        section h2 i {
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        details {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 15px 20px;
+            background-color: var(--light-bg);
+            border-bottom: 1px solid var(--border-color);
+            color: var(--secondary-color);
+            transition: background-color 0.2s ease;
+            outline: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary strong {
+            display: flex;
+            align-items: center;
+        }
+
+        summary strong::before {
+            content: "\f0da"; /* Icono de flecha derecha */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        details[open] > summary strong::before {
+            transform: rotate(90deg);
+        }
+
+        details > summary:hover {
+            background-color: #e9ecef;
+        }
+
+        details > summary:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+
+        details > div {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        form {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"],
+        form input[type="date"],
+        form textarea,
+        form select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        
+        form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        form button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #d86912; /* Un poco más oscuro */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 0.9em;
+            border-radius: 8px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 30px 0;
+        }
+
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--light-bg);
+            padding-bottom: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .hero h2 {
+                font-size: 1.7em;
+            }
+            nav ul li {
+                min-width: 120px;
+                border-bottom: 1px solid var(--border-color);
+                border-right: none;
+            }
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            section {
+                padding: 20px;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            form input[type="text"],
+            form input[type="email"],
+            form input[type="tel"],
+            form input[type="date"],
+            form textarea,
+            form select {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .hero h2 {
+                font-size: 1.5em;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                min-width: unset;
+                width: 100%;
+                border-right: none;
+            }
+            nav ul li a {
+                padding: 12px 15px;
+            }
+            section h2 {
+                font-size: 1.5em;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            section h2 i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gestoría Tramitium</h1>
+            <p>Gestiones y Trámites Online</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Bienvenido a Gestoría Tramitium</h2>
+            <p>Tu centro de soluciones para trámites registrales, mercantiles y notariales en España. Realiza tus gestiones de forma rápida, segura y sin moverte de casa. Simplemente, rellena el formulario del servicio que necesites y nos pondremos en marcha.</p>
+        </section>
+
+        <nav>
+            <ul>
+                <li><a href="#propiedad">Registro de la Propiedad</a></li>
+                <li><a href="#mercantil">Registro Mercantil</a></li>
+                <li><a href="#notarios">Notarios</a></li>
+                <li><a href="#hipotecas">Hipotecas</a></li>
+                <li><a href="#energia">Certificado Energético</a></li>
+                <li><a href="#marcas">Registro de Marcas</a></li>
+                <li><a href="#dgt">Trámites DGT</a></li>
+                <li><a href="#sociedades">Constitución de Sociedades</a></li>
+                <li><a href="#civil">Registro Civil</a></li>
+            </ul>
+        </nav>
+
+        <section id="propiedad">
+            <h2><i class="fas fa-landmark"></i> Registro de la Propiedad</h2>
+            <p>Servicios para conocer y gestionar toda la información relativa a tus inmuebles.</p>
+
+            <h3>Nota Simple</h3>
+            <p>Extracto de la información que consta en el Registro de la Propiedad sobre una finca o inmueble.</p>
+            <span class="price">Precio: 31,40€</span>
+            <details>
+                <summary><strong>► Solicitar Nota Simple Ahora</strong></summary>
+                <div>
+                    <form name="nota-simple-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Solicitud de Nota Simple" />
+                        <input type="hidden" name="Servicio" value="Nota Simple">
+                        <label for="ns-nombre">Nombre y Apellidos:</label>
+                        <input type="text" id="ns-nombre" name="Nombre" required>
+                        <br>
+                        <label for="ns-email">Correo Electrónico:</label>
+                        <input type="email" id="ns-email" name="Email" required>
+                        <br>
+                        <label for="ns-telefono">Teléfono:</label>
+                        <input type="tel" id="ns-telefono" name="Telefono">
+                        <br>
+                        <label for="ns-direccion">Dirección completa del inmueble (Calle, número, piso, C.P., Localidad, Provincia):</label>
+                        <textarea id="ns-direccion" name="Direccion_Inmueble" rows="3" required></textarea>
+                        <br>
+                        <label for="ns-titular">Nombre del titular actual (si se conoce):</label>
+                        <input type="text" id="ns-titular" name="Titular_Conocido">
+                        <br>
+                        <label for="ns-datos-extra">Otros datos que ayuden a la localización (IDUFIR/CRU, datos registrales, referencia catastral):</label>
+                        <input type="text" id="ns-datos-extra" name="Datos_Adicionales">
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+
+            <h3>Certificado de Gran Tenedor</h3>
+            <p>Certificado Negativo de Propiedades para saber si una persona o empresa es considerada "Gran Tenedor".</p>
+            <span class="price">Precio: 37,80€</span>
+            <details>
+                <summary><strong>► Solicitar Certificado de Gran Tenedor</strong></summary>
+                <div>
+                    <form name="gran-tenedor-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Certificado Gran Tenedor" />
+                        <input type="hidden" name="Servicio" value="Certificado Gran Tenedor">
+                        <label for="cgt-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="cgt-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="cgt-email-sol">Correo Electrónico (Solicitante):</label>
+                        <input type="email" id="cgt-email-sol" name="Email_Solicitante" required>
+                        <br>
+                        <label for="cgt-nombre-consulta">Datos de la persona o empresa a consultar (Nombre completo o Razón Social):</label>
+                        <input type="text" id="cgt-nombre-consulta" name="Nombre_Consultado" required>
+                        <br>
+                        <label for="cgt-nif-consulta">NIF/CIF de la persona o empresa a consultar:</label>
+                        <input type="text" id="cgt-nif-consulta" name="NIF_Consultado" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+
+            <h3>Registro de Alquiler de Corta Duración</h3>
+            <p>Obtener número de registro de vivienda de alquiler de corta duración (VFT).</p>
+            <span class="price">Precio: 90,75€</span>
+            <details>
+                <summary><strong>► Solicitar Registro de Alquiler</strong></summary>
+                <div>
+                    <form name="alquiler-corta-duracion-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Registro Alquiler Corta Duración" />
+                        <input type="hidden" name="Servicio" value="Registro Alquiler Corta Duración">
+                        <label for="racd-nombre">Nombre y Apellidos del Propietario:</label>
+                        <input type="text" id="racd-nombre" name="Propietario_Nombre" required>
+                        <br>
+                        <label for="racd-nif">NIF del Propietario:</label>
+                        <input type="text" id="racd-nif" name="Propietario_NIF" required>
+                        <br>
+                        <label for="racd-email">Correo Electrónico:</label>
+                        <input type="email" id="racd-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="racd-telefono">Teléfono:</label>
+                        <input type="tel" id="racd-telefono" name="Telefono_Contacto">
+                        <br>
+                        <label for="racd-direccion-inmueble">Dirección completa de la vivienda a registrar:</label>
+                        <textarea id="racd-direccion-inmueble" name="Direccion_Inmueble" rows="3" required></textarea>
+                        <br>
+                        <label for="racd-ref-catastral">Referencia Catastral de la vivienda:</label>
+                        <input type="text" id="racd-ref-catastral" name="Referencia_Catastral" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+
+            <hr>
+
+            <h3>¿Qué propiedades tiene una persona?</h3>
+            <p>Servicio de localización de propiedades inmobiliarias a nivel nacional.</p>
+            <span class="price">Precio: 18,15€</span>
+            <details>
+                <summary><strong>► Solicitar Localización de Propiedades</strong></summary>
+                <div>
+                    <form name="localizacion-propiedades-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Localización de Propiedades" />
+                        <input type="hidden" name="Servicio" value="Localización de Propiedades">
+                        <label for="lp-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="lp-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="lp-email-sol">Correo Electrónico (Solicitante):</label>
+                        <input type="email" id="lp-email-sol" name="Email_Solicitante" required>
+                        <br>
+                        <label for="lp-nombre-consulta">Nombre completo de la persona a investigar:</label>
+                        <input type="text" id="lp-nombre-consulta" name="Investigado_Nombre" required>
+                        <br>
+                        <label for="lp-nif-consulta">DNI/NIF de la persona a investigar:</label>
+                        <input type="text" id="lp-nif-consulta" name="Investigado_DNI" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+
+            <h3>Cambio de titular en el Registro de la Propiedad</h3>
+            <p>Gestionamos el cambio de titularidad de un inmueble por compraventa, herencia, donación, divorcio, etc.</p>
+            <span class="price">Precio: 695,75€</span>
+            <details>
+                <summary><strong>► Solicitar Cambio de Titular</strong></summary>
+                <div>
+                    <form name="cambio-titular-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Cambio de Titular Propiedad" />
+                        <input type="hidden" name="Servicio" value="Cambio de Titular Propiedad">
+                        <label for="ct-nombre-sol">Nombre y Apellidos del Solicitante:</label>
+                        <input type="text" id="ct-nombre-sol" name="Solicitante_Nombre" required>
+                        <br>
+                        <label for="ct-email">Correo Electrónico de Contacto:</label>
+                        <input type="email" id="ct-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="ct-telefono">Teléfono:</label>
+                        <input type="tel" id="ct-telefono" name="Telefono_Contacto">
+                        <br>
+                        <label for="ct-direccion-inmueble">Dirección completa del inmueble:</label>
+                        <textarea id="ct-direccion-inmueble" name="Direccion_Inmueble" rows="3" required></textarea>
+                        <br>
+                        <label for="ct-motivo">Motivo del cambio de titularidad:</label>
+                        <select id="ct-motivo" name="Motivo_Cambio" required>
+                            <option value="Compraventa">Compraventa</option>
+                            <option value="Herencia">Herencia</option>
+                            <option value="Donacion">Donación</option>
+                            <option value="Divorcio">Disolución de condominio / Divorcio</option>
+                            <option value="Sentencia">Sentencia Judicial</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <br>
+                        <label for="ct-comentarios">Breve descripción de la situación:</label>
+                        <textarea id="ct-comentarios" name="Comentarios" rows="4"></textarea>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="mercantil">
+            <h2><i class="fas fa-building"></i> Registro Mercantil</h2>
+            <p>Información y gestiones clave sobre empresas y sociedades.</p>
+
+            <h3>Nota Simple Registro Mercantil</h3>
+            <p>Extracto de la información que consta en el Registro Mercantil sobre una determinada empresa.</p>
+            <span class="price">Precio: 31,40€</span>
+            <details>
+                <summary><strong>► Solicitar Nota Simple Mercantil</strong></summary>
+                <div>
+                    <form name="nota-simple-mercantil-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Nota Simple Mercantil" />
+                        <input type="hidden" name="Servicio" value="Nota Simple Mercantil">
+                        <label for="nsm-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="nsm-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="nsm-email">Correo Electrónico:</label>
+                        <input type="email" id="nsm-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="nsm-razon-social">Razón Social de la empresa:</label>
+                        <input type="text" id="nsm-razon-social" name="Razon_Social" required>
+                        <br>
+                        <label for="nsm-cif">CIF de la empresa (si se conoce):</label>
+                        <input type="text" id="nsm-cif" name="CIF_Empresa">
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+
+            <hr>
+
+            <h3>Informe de Crédito y Solvencia de Empresa</h3>
+            <p>Informe de crédito de empresa para evaluar su fiabilidad y capacidad de pago.</p>
+            <span class="price">Precio: 28,74€</span>
+            <details>
+                <summary><strong>► Solicitar Informe de Crédito</strong></summary>
+                <div>
+                    <form name="informe-credito-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Informe Crédito y Solvencia" />
+                        <input type="hidden" name="Servicio" value="Informe Crédito y Solvencia">
+                        <label for="ic-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="ic-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="ic-email">Correo Electrónico:</label>
+                        <input type="email" id="ic-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="ic-razon-social">Razón Social de la empresa a consultar:</label>
+                        <input type="text" id="ic-razon-social" name="Razon_Social" required>
+                        <br>
+                        <label for="ic-cif">CIF de la empresa a consultar:</label>
+                        <input type="text" id="ic-cif" name="CIF_Empresa">
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="notarios">
+            <h2><i class="fas fa-file-signature"></i> Notarios</h2>
+            <p>Gestión de documentos y trámites notariales.</p>
+
+            <h3>Copia Escritura Notarial</h3>
+            <p>Consigue la copia simple o autorizada de la escritura notarial que necesites.</p>
+            <span class="price">Precio: 195,11€</span>
+            <details>
+                <summary><strong>► Solicitar Copia de Escritura</strong></summary>
+                <div>
+                    <form name="copia-escritura-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Copia Escritura Notarial" />
+                        <input type="hidden" name="Servicio" value="Copia Escritura Notarial">
+                        <label for="ce-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="ce-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="ce-email">Correo Electrónico:</label>
+                        <input type="email" id="ce-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="ce-telefono">Teléfono:</label>
+                        <input type="tel" id="ce-telefono" name="Telefono_Contacto">
+                        <br>
+                        <label for="ce-tipo-copia">Tipo de copia solicitada:</label>
+                        <select id="ce-tipo-copia" name="Tipo_Copia" required>
+                            <option value="Simple">Simple</option>
+                            <option value="Autorizada">Autorizada (con validez legal)</option>
+                        </select>
+                        <br>
+                        <label for="ce-datos-escritura">Datos de la escritura (proporcione todos los que conozca):</label>
+                        <textarea id="ce-datos-escritura" name="Datos_Escritura" rows="5" placeholder="Ej: Notario, localidad, fecha de la firma, nombre de los intervinientes, número de protocolo..."></textarea>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="hipotecas">
+            <h2><i class="fas fa-key"></i> Hipotecas</h2>
+            <p>Trámites relacionados con la hipoteca de tu inmueble.</p>
+            <h3>Cancelación de hipoteca</h3>
+            <p>Cancela la hipoteca del inmueble que desees ante el Registro de la Propiedad.</p>
+            <span class="price">Precio: 741,13€</span>
+            <details>
+                <summary><strong>► Solicitar Cancelación de Hipoteca</strong></summary>
+                <div>
+                    <form name="cancelacion-hipoteca-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Cancelación de Hipoteca" />
+                        <input type="hidden" name="Servicio" value="Cancelación de Hipoteca">
+                        <label for="ch-nombre-sol">Nombre y Apellidos (Titular):</label>
+                        <input type="text" id="ch-nombre-sol" name="Nombre_Titular" required>
+                        <br>
+                        <label for="ch-email">Correo Electrónico:</label>
+                        <input type="email" id="ch-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="ch-telefono">Teléfono:</label>
+                        <input type="tel" id="ch-telefono" name="Telefono_Contacto">
+                        <br>
+                        <label for="ch-direccion-inmueble">Dirección completa del inmueble hipotecado:</label>
+                        <textarea id="ch-direccion-inmueble" name="Direccion_Inmueble" rows="3" required></textarea>
+                        <br>
+                        <label for="ch-banco">Entidad bancaria con la que se firmó la hipoteca:</label>
+                        <input type="text" id="ch-banco" name="Entidad_Bancaria" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="energia">
+            <h2><i class="fas fa-lightbulb"></i> Certificado Energético</h2>
+            <p>Trámite obligatorio para vender o alquilar un inmueble.</p>
+
+            <h3>Certificado energético</h3>
+            <p>Consigue el certificado energético de tu vivienda, obligatorio para vender o alquilar.</p>
+            <span class="price">Precio: 128,56€</span>
+            <details>
+                <summary><strong>► Solicitar Certificado Energético</strong></summary>
+                <div>
+                    <form name="certificado-energetico-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Certificado Energético" />
+                        <input type="hidden" name="Servicio" value="Certificado Energético">
+                        <label for="cen-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="cen-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="cen-email">Correo Electrónico:</label>
+                        <input type="email" id="cen-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="cen-telefono">Teléfono para agendar visita del técnico:</label>
+                        <input type="tel" id="cen-telefono" name="Telefono_Contacto" required>
+                        <br>
+                        <label for="cen-direccion-inmueble">Dirección completa del inmueble a certificar:</label>
+                        <textarea id="cen-direccion-inmueble" name="Direccion_Inmueble" rows="3" required></textarea>
+                        <br>
+                        <label for="cen-tipo-inmueble">Tipo de Inmueble:</label>
+                        <select id="cen-tipo-inmueble" name="Tipo_Inmueble" required>
+                            <option value="Piso">Piso</option>
+                            <option value="Chalet">Chalet / Vivienda unifamiliar</option>
+                            <option value="Local">Local comercial</option>
+                            <option value="Oficina">Oficina</option>
+                        </select>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="marcas">
+            <h2><i class="fas fa-trademark"></i> Registro de Marcas</h2>
+            <p>Protege tu identidad comercial a nivel nacional y europeo.</p>
+            <h3>Registro de marca nacional 🇪🇸</h3>
+            <p>Protege tu marca frente a terceros en todo el territorio español.</p>
+            <span class="price">Precio: 281,26€</span>
+            <details>
+                <summary><strong>► Solicitar Registro de Marca Nacional</strong></summary>
+                <div>
+                    <form name="marca-nacional-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Registro Marca Nacional" />
+                        <input type="hidden" name="Servicio" value="Registro Marca Nacional">
+                        <label for="rmn-nombre-sol">Nombre o Razón Social del Titular:</label>
+                        <input type="text" id="rmn-nombre-sol" name="Nombre_Titular" required>
+                        <br>
+                        <label for="rmn-nif">NIF/CIF del Titular:</label>
+                        <input type="text" id="rmn-nif" name="NIF_Titular" required>
+                        <br>
+                        <label for="rmn-email">Correo Electrónico de Contacto:</label>
+                        <input type="email" id="rmn-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="rmn-marca">Nombre de la marca a registrar:</label>
+                        <input type="text" id="rmn-marca" name="Nombre_Marca" required>
+                        <br>
+                        <label for="rmn-actividades">Describe los productos o servicios que protegerá la marca:</label>
+                        <textarea id="rmn-actividades" name="Actividades_Marca" rows="4" placeholder="Ej: Ropa y calzado, servicios de restauración, software informático..." required></textarea>
+                        <br>
+                        <label for="rmn-logo">Si la marca tiene un logotipo, le indicaremos cómo enviarlo por correo tras recibir su solicitud.</label>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="dgt">
+            <h2><i class="fas fa-car"></i> Trámites ante la DGT</h2>
+            <p>Informes oficiales para conocer el estado de cualquier vehículo.</p>
+            <h3>Informe de vehículo por matrícula</h3>
+            <p>Solicita un informe de tráfico emitido por la DGT sobre el vehículo que desees.</p>
+            <span class="price">Precio: 26,28€</span>
+            <details>
+                <summary><strong>► Solicitar Informe de Vehículo</strong></summary>
+                <div>
+                    <form name="informe-dgt-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Informe DGT por Matrícula" />
+                        <input type="hidden" name="Servicio" value="Informe DGT por Matrícula">
+                        <label for="idgt-nombre-sol">Nombre y Apellidos (Solicitante):</label>
+                        <input type="text" id="idgt-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="idgt-email">Correo Electrónico (donde recibir el informe):</label>
+                        <input type="email" id="idgt-email" name="Email_Entrega" required>
+                        <br>
+                        <label for="idgt-matricula">Matrícula del vehículo:</label>
+                        <input type="text" id="idgt-matricula" name="Matricula" required>
+                        <br>
+                        <label for="idgt-motivo">Motivo de la solicitud (Ej: Compra de vehículo):</label>
+                        <input type="text" id="idgt-motivo" name="Motivo_Solicitud">
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+        
+        <section id="sociedades">
+            <h2><i class="fas fa-rocket"></i> Constitución de Sociedades</h2>
+            <p>El primer paso para tu nuevo proyecto empresarial.</p>
+            <h3>Certificación negativa denominación social</h3>
+            <p>Solicita una certificación negativa de denominación social ante el Registro Mercantil. Imprescindible para constituir una sociedad.</p>
+            <span class="price">Precio: 48,40€</span>
+            <details>
+                <summary><strong>► Solicitar Certificado de Denominación Social</strong></summary>
+                <div>
+                    <form name="denominacion-social-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Certificado Denominación Social" />
+                        <input type="hidden" name="Servicio" value="Certificado Denominación Social">
+                        <label for="cds-nombre-sol">Nombre del socio solicitante:</label>
+                        <input type="text" id="cds-nombre-sol" name="Nombre_Socio" required>
+                        <br>
+                        <label for="cds-email">Correo Electrónico de Contacto:</label>
+                        <input type="email" id="cds-email" name="Email_Contacto" required>
+                        <br>
+                        <label for="cds-denominacion1">Opción 1 de nombre para la sociedad:</label>
+                        <input type="text" id="cds-denominacion1" name="Denominacion_1" required>
+                        <br>
+                        <label for="cds-denominacion2">Opción 2 de nombre para la sociedad:</label>
+                        <input type="text" id="cds-denominacion2" name="Denominacion_2">
+                        <br>
+                        <label for="cds-denominacion3">Opción 3 de nombre para la sociedad:</label>
+                        <input type="text" id="cds-denominacion3" name="Denominacion_3">
+                        <br>
+                        <label for="cds-forma-social">Forma Social (SL, SA, etc.):</label>
+                        <input type="text" id="cds-forma-social" name="Forma_Social" value="SL" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+        <section id="civil">
+            <h2><i class="fas fa-book"></i> Registro Civil</h2>
+            <p>Certificados oficiales para trámites de herencias y sucesiones.</p>
+            <h3>Certificado Actos de Última Voluntad</h3>
+            <p>Documento oficial que acredita si una persona fallecida otorgó testamento y ante qué notario.</p>
+            <span class="price">Precio: 36,25€</span>
+            <details>
+                <summary><strong>► Solicitar Certificado de Últimas Voluntades</strong></summary>
+                <div>
+                    <form name="ultimas-voluntades-form" method="POST" action="https://formsubmit.co/gestoriatramitium@gmail.com">
+                        <input type="hidden" name="_next" value="https://TU_SITIO.vercel.app/gracias.html" />
+                        <input type="hidden" name="_subject" value="Tramitium: Certificado Actos Última Voluntad" />
+                        <input type="hidden" name="Servicio" value="Certificado Actos Última Voluntad">
+                        <label for="cuv-nombre-sol">Nombre y Apellidos del Solicitante:</label>
+                        <input type="text" id="cuv-nombre-sol" name="Nombre_Solicitante" required>
+                        <br>
+                        <label for="cuv-email">Correo Electrónico de Contacto:</label>
+                        <input type="email" id="cuv-email" name="Email_Contacto" required>
+                        <hr>
+                        <h4>Datos de la Persona Fallecida</h4>
+                        <label for="cuv-nombre-fallecido">Nombre completo del fallecido:</label>
+                        <input type="text" id="cuv-nombre-fallecido" name="Fallecido_Nombre" required>
+                        <br>
+                        <label for="cuv-dni-fallecido">DNI del fallecido:</label>
+                        <input type="text" id="cuv-dni-fallecido" name="Fallecido_DNI">
+                        <br>
+                        <label for="cuv-fecha-defuncion">Fecha de defunción:</label>
+                        <input type="date" id="cuv-fecha-defuncion" name="Fallecido_FechaDefuncion" required>
+                        <br>
+                        <label for="cuv-lugar-defuncion">Lugar de defunción (Localidad y Provincia):</label>
+                        <input type="text" id="cuv-lugar-defuncion" name="Fallecido_LugarDefuncion" required>
+                        <br>
+                        <button type="submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </details>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gestoría Tramitium. Todos los derechos reservados.</p>
+            <p>
+                <a href="#aviso-legal">Aviso Legal</a> | 
+                <a href="#privacidad">Política de Privacidad</a> | 
+                <a href="#cookies">Política de Cookies</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
